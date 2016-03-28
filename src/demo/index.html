@@ -123,6 +123,7 @@
         $('body').on('click','.toolbar a', function(){
             var panelID = $(this).data('panelid');
             console.log('panelID :'+panelID);
+            $('#'+panelID).closest('.row').show();
             $('#'+panelID).show();
             $(this).closest('li').remove();
         });
