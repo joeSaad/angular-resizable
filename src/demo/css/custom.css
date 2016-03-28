@@ -1,0 +1,37 @@
+.toolbar {
+    /*position: absolute;
+    left: 0;
+    top: 20px;*/
+    border: 2px solid #284992;
+}
+
+.test {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+.content {
+    border: 1px solid red;
+    width: 1050px;
+    padding: 20px;
+ -webkit-flex-wrap: wrap; /* Safari */
+  flex-wrap:         wrap;
+}
+
+section {
+    /*position: absolute;
+    left: 0;
+    top: 20px;*/
+}
+
+
+.panel-control {
+	    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+
+.panel {
+	position: relative;
+}

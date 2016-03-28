@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Resizable</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://rawgit.com/Reklino/gromlicons/master/style.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> -->
+
+</head>
+
+<body ng-app="angularResizable">
+
+        <!--             <nav resizable r-directions="['right']">
+                <span class="icon-big icon_expand-1"></span>
+                <br />
+                <br />
+                <h1>
+              Angular
+              Resizable
+            </h1>
+                <p>
+                    A teensy weensy directive for creating resizable containers.
+                </p>
+            </nav> -->
+        
+        <div class="toolbar">
+            <ul></ul>
+        </div>
+    
+
+        <div class="content">
+            <div class="row" resizable r-directions="['bottom']" r-flex="true">
+                <section resizable r-directions="['right']" r-flex="true">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3>Panel 1</h3>
+                            <div class="panel-control"><a class="close" href="#"><span class="glyphicon glyphicon-remove"></span></a></div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                        </div>
+                    </div>
+                </section>
+                <section resizable r-directions="['right']" r-flex="true">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3>Panel 2</h3>
+                            <div class="panel-control"><a class="close" href="#"><span class="glyphicon glyphicon-remove"></span></a></div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3>Panel 3</h3>
+                            <div class="panel-control"><a class="close" href="#"><span class="glyphicon glyphicon-remove"></span></a></div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="row">
+                <section resizable r-directions="['right']" r-flex="true">
+                    <mpanel></mpanel>
+                </section>
+                <section>
+                    <mpanel></mpanel>
+                </section>
+            </div>
+        </div>
+
+    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+    <script src="js/index.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+
+    <script>
+       /* var mainApp = angular.module('angularResizable1',['angularResizable']);
+        mainApp.directive('mpanel',function(){
+            return {
+                restrict: "E",
+                template: '<div class="panel panel-info"><div class="panel-heading"><h3>Panel 1</h3><div class="panel-control"><a class="close" href="#"><span class="glyphicon glyphicon-remove"></span></a></div></div><div class="panel-body"><iframe src="http://www.cnn.com" frameborder="0"></iframe></div></div>'
+            }
+        })
+*/
+
+    </script>
+
+
+    <script>
+        $('.close').click(function(){
+            var panelHeading = $(this).closest('.panel-control').prev('h3').text().toLowerCase();
+            var refinedPanelHeading = panelHeading.replace(" ","_");
+            var visiblePanels = $(this).closest('.row').children('section:visible').length;
+
+            $(this).closest('section').attr('id',refinedPanelHeading);
+            $(this).closest('section').hide();
+            $('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');
+
+            console.log('visibile panels :'+ visiblePanels);
+            if (visiblePanels === 1) {
+                $(this).closest('.row').hide();
+            }
+            else {
+                $(this).closest('.row').show();
+            }
+
+        });
+
+        $('body').on('click','.toolbar a', function(){
+            var panelID = $(this).data('panelid');
+            console.log('panelID :'+panelID);
+            $('#'+panelID).show();
+            $(this).closest('li').remove();
+        });
+
+
+    </script>
+
+</body>
+
+</html>
