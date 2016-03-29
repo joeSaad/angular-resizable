@@ -15,8 +15,8 @@
     border: 1px solid red;
     width: 1050px;
     padding: 20px;
- -webkit-flex-wrap: wrap; /* Safari */
-  flex-wrap:         wrap;
+ /*-webkit-flex-wrap: wrap; 
+  flex-wrap:         wrap;*/
 }
 
 section {
@@ -27,9 +27,14 @@ section {
 
 
 .panel-control {
-	    position: absolute;
+    position: absolute;
     top: 10px;
     right: 5px;
+}
+
+.panel-control a {
+    float: right;
+    margin-right: 10px;
 }
 
 .panel {
