@@ -23,6 +23,21 @@ section {
     /*position: absolute;
     left: 0;
     top: 20px;*/
+    /*position: absolute;
+    left: 0;
+    top: 20px;*/
+    margin-bottom: 20px;
+}
+
+.panel-body > iframe {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.panel-body {
+    overflow: visible;
+    position: relative;
 }
 
 

@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                            <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
                         </div>
                     </div>
                 </section>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                            <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
                         </div>
                     </div>
                 </section>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                            <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
                         </div>
                     </div>
                 </section>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                            <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
                         </div>
                     </div>
                 </section>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <!-- <iframe src="http://www.cnn.com" frameborder="0"></iframe> -->
+                            <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
                         </div>
                     </div>
                 </section>
@@ -151,8 +151,9 @@
         });
 
         $('.maximize-control').click(function(){
-            $(this).hide();
-            $(this).closest('section').siblings('section').each(function(){
+            var currentSection = $(this).closest('section');
+            var currentRow = $(this).closest('.row');
+            $('section').not(currentSection).each(function(){
                 var $thisSection = $(this);
                 var panelHeading = $thisSection.find('h3').text().toLowerCase();
                 var refinedPanelHeading = panelHeading.replace(" ","_");
@@ -160,24 +161,11 @@
                 $thisSection.hide();
                 $('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');
             });
+            $(this).hide();
 
-            $(this).closest('.row').siblings('.row').each(function(){
-                var $thisRow = $(this);
-
-                $thisRow.children('section').each(function(){
-                    var $thisSection = $(this); 
-                    var panelHeading = $thisSection.find('h3').text().toLowerCase();
-                    var refinedPanelHeading = panelHeading.replace(" ","_");
-                    $thisSection.attr('id',refinedPanelHeading);
-                    $thisSection.hide();
-                    $('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');
-                })
-
-
-            });
-
-            $(this).closest('section').siblings('section').hide();
-            $(this).closest('.row').siblings('.row').hide();
+            $('.row').not(currentRow).each(function(){
+                $(this).hide();
+            })
 
         });
 
