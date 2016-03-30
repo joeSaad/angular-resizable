@@ -114,6 +114,7 @@ main {
 section {
   -webkit-flex: 1;
       -ms-flex: 1;
+        flex: 1;
   background: #ddd;
   border-radius: 10px;
   box-sizing: border-box;
