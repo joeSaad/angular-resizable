@@ -9,194 +9,94 @@
     <link href='https://rawgit.com/Reklino/gromlicons/master/style.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom.css">
 
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> -->
-
+    <style>
+        section.resizable > .panel {
+            overflow-y: hidden;
+        }
+    </style>
 </head>
 
-<body ng-app="angularResizable">
+<body>
 
-        <!--             <nav resizable r-directions="['right']">
-                <span class="icon-big icon_expand-1"></span>
-                <br />
-                <br />
-                <h1>
+    <body ng-app="angularResizable">
+        <!-- <main> -->
+        <!-- <nav resizable r-directions="['right']">
+            <span class="icon-big icon_expand-1"></span>
+            <br /><br />
+            <h1>
               Angular
               Resizable
             </h1>
-                <p>
-                    A teensy weensy directive for creating resizable containers.
-                </p>
-            </nav> -->
-        
-        <div class="toolbar">
-            <ul></ul>
-        </div>
-    
-
+            <p>
+              A teensy weensy directive for creating resizable containers.
+            </p>
+        </nav> -->
         <div class="content">
-<main>
-    <div class="row" resizable r-directions="['bottom']" r-flex="true">
-        <section resizable r-directions="['right']" r-flex="true">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3>Panel 1</h3>
-                    <div class="panel-control">
-                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+            <div class="row" resizable r-directions="['bottom']" r-flex="true">
+                <section resizable r-directions="['right']" r-flex="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3>Panel 2</h3>
-                    <div class="panel-control">
-                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+                </section>
+                <section>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">Panel 2 </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
-                </div>
+                </section>
             </div>
-        </section>
-        <section resizable r-directions="['left']" r-flex="true">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3>Panel 3</h3>
-                    <div class="panel-control">
-                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+            <div class="row">
+                <section id="three" resizable r-directions="['right']" r-flex="true">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="row">
-        <section resizable r-directions="['right']" r-flex="true">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3>Panel 4</h3>
-                    <div class="panel-control">
-                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
-                </div>
-            </div>
-        </section>
-        <section resizable>
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3>Panel 5</h3>
-                    <div class="panel-control">
-                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <!-- <iframe src="https://github.com" frameborder="0"></iframe> -->
-                </div>
-            </div>
-        </section>
-    </div>
-            </div>
-</main>
-    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
-    <script src="js/index.js"></script>
 
+                </section>
+                <section id="four">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- </main> -->
+    </body>
+    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
 
-    <script>
-       /* var mainApp = angular.module('angularResizable1',['angularResizable']);
-        mainApp.directive('mpanel',function(){
-            return {
-                restrict: "E",
-                template: '<div class="panel panel-info"><div class="panel-heading"><h3>Panel 1</h3><div class="panel-control"><a class="close" href="#"><span class="glyphicon glyphicon-remove"></span></a></div></div><div class="panel-body"><iframe src="http://www.cnn.com" frameborder="0"></iframe></div></div>'
-            }
-        })
-*/
-
-    </script>
-
+    <script src="js/index.js"></script>
 
     <script>
-        var collapsedPanels = [];
-        function pushPanel(rPH, PH) {
-            if (collapsedPanels.indexOf(rPH) < 0) {
-                    console.log('not found :'+rPH);
-                    collapsedPanels.push(rPH);
-                    $('.toolbar ul').append('<li><a href="#" data-panelid="'+rPH+'">'+PH+'</a></li>');
-                }
-                console.log('collapsedPanels :'+collapsedPanels);
-        }
-
-
-        $('.close-control').click(function(){
-            var panelHeading = $(this).closest('.panel-control').prev('h3').text().toLowerCase();
-            var refinedPanelHeading = panelHeading.replace(" ","_");
-            var visiblePanels = $(this).closest('.row').children('section:visible').length;
-
-            $(this).closest('section').attr('id',refinedPanelHeading);
-            $(this).closest('section').hide();
-            pushPanel(refinedPanelHeading, panelHeading);
-
-            /*$('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');*/
-
-            if (visiblePanels === 1) {
-                $(this).closest('.row').hide();
-            }
-            else {
-                $(this).closest('.row').show();
-            }
-
-        });
-
-        $('.maximize-control').click(function(){
-            var currentSection = $(this).closest('section');
-            var currentRow = $(this).closest('.row');
-            $('section').not(currentSection).each(function(){
-                var $thisSection = $(this);
-                var panelHeading = $thisSection.find('h3').text().toLowerCase();
-                var refinedPanelHeading = panelHeading.replace(" ","_");
-                $thisSection.attr('id',refinedPanelHeading);
-                $thisSection.hide();
-                pushPanel(refinedPanelHeading, panelHeading);
-                /*$('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');*/
-            });
-            $(this).hide();
-
-            $('.row').not(currentRow).each(function(){
-                $(this).hide();
+        $(function(){
+            $('.panel').each(function(){
+                console.log(' :'+$(this).closest('section').height());
+                $(this).height($(this).closest('section').height() - 40);
             })
-
-        });
-
-        $('body').on('click','.toolbar a', function(){
-            var panelID = $(this).data('panelid');
-            console.log('panelID :'+panelID);
-            collapsedPanels.splice(collapsedPanels.indexOf(panelID),1);
-            console.log('collapsedPanels :'+collapsedPanels);
-            $('#'+panelID).closest('.row').show();
-            $('#'+panelID).show();
-            $(this).closest('li').remove();
-            $('.maximize-control').show();
-        });
-
-
+            $('.rg-bottom').mouseup(function(event) {
+                $('.panel').each(function(){  
+                    console.log(' :'+$(this).closest('section').height());
+                    $(this).height($(this).closest('section').height() - 40);
+                });
+            });
+        })
     </script>
+    
+        
+
+
 
 </body>
 
