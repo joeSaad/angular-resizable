@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        section.resizable > .panel {
+        section > .panel {
             overflow-y: hidden;
         }
     </style>
@@ -36,7 +36,12 @@
             <div class="row" resizable r-directions="['bottom']" r-flex="true">
                 <section resizable r-directions="['right']" r-flex="true">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-heading"><h3>Panel 1</h3> 
+                        <div class="panel-control">
+                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+                    </div>
+                        </div>
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
                         </div>
@@ -44,7 +49,12 @@
                 </section>
                 <section>
                      <div class="panel panel-default">
-                        <div class="panel-heading">Panel 2 </div>
+                        <div class="panel-heading"><h3>Panel 1</h3>
+                            <div class="panel-control">
+                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+                    </div>
+                         </div>
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
                         </div>
@@ -54,7 +64,12 @@
             <div class="row">
                 <section id="three" resizable r-directions="['right']" r-flex="true">
                      <div class="panel panel-default">
-                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-heading"><h3>Panel 1</h3>
+                            <div class="panel-control">
+                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+                    </div>
+                         </div>
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
                         </div>
@@ -63,7 +78,12 @@
                 </section>
                 <section id="four">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Panel 1 </div>
+                        <div class="panel-heading"><h3>Panel 1</h3>
+                            <div class="panel-control">
+                        <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
+                    </div>
+                         </div>
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
                         </div>
@@ -83,15 +103,27 @@
         $(function(){
             $('.panel').each(function(){
                 console.log(' :'+$(this).closest('section').height());
-                $(this).height($(this).closest('section').height() - 40);
+                $(this).height($(this).closest('section').height() - 30);
             })
+
             $('.rg-bottom').mouseup(function(event) {
-                $('.panel').each(function(){  
-                    console.log(' :'+$(this).closest('section').height());
-                    $(this).height($(this).closest('section').height() - 40);
-                });
+            
+                $('.panel').each(function(){
+                    if ($(this).height() > $(this).closest('section').height()) {
+                        $(this).height($(this).closest('section').height());
+                    }
+                    console.log('sectionHeight :'+$(this).closest('section').height() + 'panelHeight: ' + $(this).height());
+
+                    if ($(this).closest('section').height() - $(this).height() > 30) {
+                        $(this).height($(this).closest('section').height());
+                    }
+                })
+
             });
-        })
+
+        });
+
+        
     </script>
     
         
