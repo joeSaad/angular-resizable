@@ -9,11 +9,7 @@
     <link href='https://rawgit.com/Reklino/gromlicons/master/style.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-    section > .panel {
-        overflow-y: hidden;
-    }
-    </style>
+    <link rel="stylesheet" href="css/customized.css">
 </head>
 
 <body>
@@ -43,7 +39,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora repellat saepe voluptatibus ipsum! Consequuntur consectetur expedita amet provident totam, ducimus, assumenda sint, minus architecto culpa, voluptatem veritatis nesciunt molestias deserunt.</p>
+                            <iframe src="http://joesaad.net" frameborder="0"></iframe>
                         </div>
                     </div>
                 </section>
@@ -117,6 +113,7 @@
         $('.panel').each(function() {
             console.log(' :' + $(this).closest('section').height());
             $(this).height($(this).closest('section').height() - 30);
+            $(this).find('.panel-body').height($(this).closest('.panel').height() - 80);
         })
 
         $('.rg-bottom').mouseup(function(event) {
@@ -124,16 +121,44 @@
             $('.panel').each(function() {
                 if ($(this).height() > $(this).closest('section').height()) {
                     $(this).height($(this).closest('section').height());
+                    $(this).find('.panel-body').height($(this).closest('.panel').height() - 100);
                 }
-                console.log('sectionHeight :' + $(this).closest('section').height() + 'panelHeight: ' + $(this).height());
+                //console.log('sectionHeight :' + $(this).closest('section').height() + 'panelHeight: ' + $(this).height());
 
                 if ($(this).closest('section').height() - $(this).height() > 30) {
                     $(this).height($(this).closest('section').height());
+                    $(this).find('.panel-body').height($(this).closest('.panel').height() - 100);
                 }
+            })
+
+            $('iframe').each(function(){
+                //$(this).height($(this).closest('.panel-body'));
+                //$(this).contents().height($(this).contents().find("html").height());
+                //$(this).height($(this).closest('.panel-body').height()+80);
+                console.log('heightContiner :'+$(this).closest('.panel-body').height());
+                $(this).height($(this).closest('.panel-body').height()-10);
             })
 
         });
 
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.addEventListener("mousedown", function(e) {
+            var iframes = document.getElementsByTagName("iframe");
+
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].style.pointerEvents = "none";
+            }
+        }, true);
+        document.addEventListener("mouseup", function(e) {
+            var iframes = document.getElementsByTagName("iframe");
+
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].style.pointerEvents = "auto";
+            }
+        }, true);
     });
     </script>
 </body>
