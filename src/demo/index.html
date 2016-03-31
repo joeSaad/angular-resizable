@@ -27,6 +27,11 @@
               A teensy weensy directive for creating resizable containers.
             </p>
         </nav> -->
+
+         <div class="toolbar">
+            <ul></ul>
+        </div>
+
         <div class="content">
             <div class="row" resizable r-directions="['bottom']" r-flex="true">
                 <section resizable r-directions="['right']" r-flex="true">
@@ -39,14 +44,14 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <iframe src="http://joesaad.net" frameborder="0"></iframe>
+                            <iframe src="http://bbc.com" frameborder="0"></iframe>
                         </div>
                     </div>
                 </section>
                 <section resizable r-directions="['right']" r-flex="true">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Panel 1</h3>
+                            <h3>Panel 2</h3>
                             <div class="panel-control">
                                 <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
                                 <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
@@ -60,7 +65,7 @@
                 <section>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Panel 1</h3>
+                            <h3>Panel 3</h3>
                             <div class="panel-control">
                                 <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
                                 <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
@@ -76,7 +81,7 @@
                 <section id="three" resizable r-directions="['right']" r-flex="true">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Panel 1</h3>
+                            <h3>Panel 4</h3>
                             <div class="panel-control">
                                 <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
                                 <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
@@ -90,7 +95,7 @@
                 <section id="four">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Panel 1</h3>
+                            <h3>Panel 5</h3>
                             <div class="panel-control">
                                 <a class="close-control" href="#"><span class="glyphicon glyphicon-remove"></span></a>
                                 <a href="#" class="maximize-control"><span class="glyphicon glyphicon-resize-full"></span></a>
@@ -142,6 +147,106 @@
         });
 
     });
+
+    // ========= controls code BEGIN
+        var collapsedPanels = [];
+        function pushPanel(rPH, PH) {
+            if (collapsedPanels.indexOf(rPH) < 0) {
+                    console.log('not found :'+rPH);
+                    collapsedPanels.push(rPH);
+                    $('.toolbar ul').append('<li><a href="#" data-panelid="'+rPH+'">'+PH+'</a></li>');
+                }
+                console.log('collapsedPanels :'+collapsedPanels);
+        }
+
+
+        $('.close-control').click(function(){
+            var panelHeading = $(this).closest('.panel-control').prev('h3').text().toLowerCase();
+            var refinedPanelHeading = panelHeading.replace(" ","_");
+            var visiblePanels = $(this).closest('.row').children('section:visible').length;
+
+            $(this).closest('section').attr('id',refinedPanelHeading);
+            $(this).closest('section').hide();
+            pushPanel(refinedPanelHeading, panelHeading);
+
+            /*$('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');*/
+
+            $('.row').each(function(){
+                var sections = $(this).children('section:visible').length;
+                var visibles = $(this).children('section.resizable:visible').length;
+                if ($(this).children('section.resizable:visible').length >= 1  && visibles == sections) {
+                    $(this).children('section.resizable:visible').addClass('fullFlexBasis');
+                }
+            })
+            
+
+            if (visiblePanels === 1) {
+                $(this).closest('.row').hide();
+            }
+            else {
+                $(this).closest('.row').show();
+            }
+
+        });
+
+        $('.maximize-control').click(function(){
+            var currentSection = $(this).closest('section');
+            var currentRow = $(this).closest('.row');
+            $('section').not(currentSection).each(function(){
+                var $thisSection = $(this);
+                var panelHeading = $thisSection.find('h3').text().toLowerCase();
+                var refinedPanelHeading = panelHeading.replace(" ","_");
+                $thisSection.attr('id',refinedPanelHeading);
+                $thisSection.hide();
+                pushPanel(refinedPanelHeading, panelHeading);
+                /*$('.toolbar ul').append('<li><a href="#" data-panelid="'+refinedPanelHeading+'">'+panelHeading+'</a></li>');*/
+            });
+            $(this).hide();
+
+            $('.row').not(currentRow).each(function(){
+                $(this).hide();
+            })
+
+            currentSection.addClass('fullFlexBasis');
+
+
+
+        });
+
+        $('body').on('click','.toolbar a', function(){
+            var panelID = $(this).data('panelid');
+            collapsedPanels.splice(collapsedPanels.indexOf(panelID),1);
+            console.log('collapsedPanels :'+collapsedPanels);
+            $('#'+panelID).closest('.row').show();
+            $('#'+panelID).show();
+            $(this).closest('li').remove();
+            $('.maximize-control').show();
+            $('.row').each(function(){
+                var sections = $(this).children('section:visible').length;
+                var visibles = $(this).children('section.resizable:visible').length;
+
+
+                console.log('resizable: '+$(this).children('section.resizable:visible').length);
+                console.log('sections: '+$(this).children('section:visible').length);
+                if ($(this).children('section.resizable:visible').length >= 1  && visibles == sections) {
+                    $(this).children('section.resizable:visible').addClass('fullFlexBasis');
+                }
+                else {
+                    $(this).children('section').removeClass('fullFlexBasis');
+                }
+            })
+
+            $('section.resizable:visible').each(function(){
+                $(this).css('flex-basis','');
+            })
+
+            $('.maximize-control').each(function(){
+                $(this).show();
+            })
+        });
+
+    // ========= controls code END
+
 
 
     document.addEventListener("DOMContentLoaded", function(event) {

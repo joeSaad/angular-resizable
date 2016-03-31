@@ -1,3 +1,19 @@
+body {
+	overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.content {
+	width: 1200px;
+}
+
+section.resizable {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 300px;
+      -ms-flex: 0 0 300px;
+          flex: 0 0 300px;
+}
+
 section > .panel {
         /*overflow-y: hidden;*/
         position: relative;
@@ -26,4 +42,8 @@ section > .panel {
 .panel-control a {
     float: right;
     margin-right: 10px;
+}
+
+section.fullFlexBasis {
+	flex: 1;
 }
