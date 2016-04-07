@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Resizable</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/flexboxgrid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/customized.css"> -->
+    <style>
+    .container-fluid {
+        border: 2px solid blue;
+    }
+    .content {
+        height: 100%
+    }
+    .row {
+        border: 1px solid red;
+        margin-bottom: 5px;
+    }
+    [class^='col'] {
+        border: 1px solid green;
+    }
+    
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <body ng-app="angularResizable">
+        <div class="toolbar">
+            <ul></ul>
+        </div>
+        <!-- <section resizable r-directions="['right']" r-flex="true" class="col-lg-3 col-md-3"> -->
+        <div class="content container-fluid">
+            
+            <div class="row" resizable r-directions="['bottom']" r-flex="true">
+                <div resizable r-directions="['right']" r-flex="true" class="col-lg-6 col-md-6">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique voluptate veniam blanditiis ipsum doloribus perferendis repellat rem, obcaecati sapiente odio molestias fugit, aliquid dignissimos quidem labore deserunt inventore delectus iste.</p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div r-flex="true" class="row" resizable r-directions="['bottom']">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni veritatis officia dolor incidunt fuga minima cumque voluptates impedit doloremque quis ullam sed dignissimos cum, excepturi earum, tempora hic facere? Dolor.</p>
+                    </div>
+                    <div class="row">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur iste debitis veritatis quas maiores quidem aspernatur accusamus velit fugit facilis, quam consequuntur. Eum earum ipsa voluptas minima a, debitis!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, voluptatibus fugiat consequuntur itaque nisi maiores! Sit voluptates, corrupti delectus recusandae adipisci deleniti, reiciendis consequatur eos quibusdam vitae, ipsa aperiam magni!</p>
+            </div>
+
+        </div>
+        <!-- </main> -->
+    </body>
+    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/nextGenLayoutMgmt.js"></script>
+</body>
+
+</html>

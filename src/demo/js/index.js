@@ -71,6 +71,7 @@ angular.module('angularResizable', [])
                         case 'bottom':
                             prop = scope.rFlex ? flexBasis : 'height';
                             element[0].style[prop] = h - (offset * vy) + 'px';
+                            element[0].style["height"] = element[0].style[prop];     // added by JS - am putting on a pull-request on github
                             break;
                         case 'right':
                             prop = scope.rFlex ? flexBasis : 'width';
